@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST lead success",
+      "method": "POST",
+      "path": "/",
+      "body": { "name": "Тест", "phone": "+79785290468", "message": "Интересует велосипед", "form_type": "lead" },
+      "expectedStatus": 200,
+      "expectedBody": { "ok": true },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "POST missing fields",
+      "method": "POST",
+      "path": "/",
+      "body": { "name": "" },
+      "expectedStatus": 400
+    }
+  ]
+}
