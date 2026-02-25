@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Zap, Lock, TrendingUp, Cpu, Settings, Cloud, ArrowRight } from "lucide-react";
+import { ArrowRight, Zap, Shield, Truck, Headphones, Battery, Gauge } from "lucide-react";
+import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [visibleSections, setVisibleSections] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const observers: Record<string, IntersectionObserver> = {};
-
     const sectionIds = ["hero", "features", "how", "pricing", "cta"];
 
     sectionIds.forEach((id) => {
@@ -36,28 +36,31 @@ const Index = () => {
       {/* Header */}
       <header className="fixed top-0 w-full bg-background/80 backdrop-blur-2xl border-b border-accent/20 z-50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-accent to-accent/60 rounded-lg flex items-center justify-center">
+              <Zap className="w-4 h-4 text-black" />
+            </div>
             <div className="font-display font-bold text-2xl tracking-tighter bg-gradient-to-r from-white via-accent to-accent/80 bg-clip-text text-transparent">
-              AgentForge
+              ElectroRide
             </div>
           </div>
           <nav className="hidden md:flex gap-10 text-sm font-medium">
             <a href="#features" className="text-muted-foreground hover:text-white transition-colors">
-              Возможности
+              Каталог
             </a>
             <a href="#how" className="text-muted-foreground hover:text-white transition-colors">
-              Как это работает
+              Как купить
             </a>
             <a href="#pricing" className="text-muted-foreground hover:text-white transition-colors">
-              Тарифы
+              Цены
             </a>
           </nav>
           <div className="flex gap-3">
             <button className="px-5 py-2.5 text-sm font-medium border border-accent/40 rounded-full hover:border-accent/70 hover:bg-accent/10 transition-all">
-              Войти
+              О нас
             </button>
             <button className="px-5 py-2.5 text-sm font-medium bg-gradient-to-r from-accent via-accent to-accent/80 text-black rounded-full hover:shadow-lg hover:shadow-accent/40 transition-all font-semibold">
-              Попробовать
+              Заказать
             </button>
           </div>
         </div>
@@ -66,53 +69,60 @@ const Index = () => {
       {/* Hero Section */}
       <section id="hero" className="relative pt-32 pb-32 px-6 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden">
-          <img src="/images/black-hole-gif.gif" alt="Black hole animation" className="w-auto h-3/4 object-contain" />
+          <img src="/images/black-hole-gif.gif" alt="Electric energy animation" className="w-auto h-3/4 object-contain opacity-60" />
         </div>
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-blue-950/40" />
 
-        {/* Content overlay */}
+        {/* Декоративные элементы */}
+        <div className="absolute top-1/4 left-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }} />
+
         <div className="relative z-10 max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div
               className={`transition-all duration-1000 ${visibleSections["hero"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
               <div className="mb-8 inline-block">
-                <span className="text-xs font-medium tracking-widest text-accent/80 uppercase">
-                  AI-инфраструктура нового поколения
+                <span className="text-xs font-medium tracking-widest text-accent/80 uppercase border border-accent/30 rounded-full px-4 py-1.5">
+                  ⚡ Электротранспорт нового поколения
                 </span>
               </div>
               <h1 className="text-6xl lg:text-7xl font-display font-black leading-tight mb-8 tracking-tighter">
                 <span className="bg-gradient-to-br from-white via-white to-accent/40 bg-clip-text text-transparent">
-                  Создавай. Запускай.
+                  Едь тихо.
                 </span>
                 <br />
-                <span className="text-accent">Автоматизируй.</span>
+                <span className="text-accent">Едь чисто.</span>
+                <br />
+                <span className="bg-gradient-to-br from-white via-white to-blue-400/60 bg-clip-text text-transparent">
+                  Едь умно.
+                </span>
               </h1>
               <p className="text-xl text-white/80 leading-relaxed mb-10 max-w-xl font-light">
-                AgentForge позволяет создавать, разворачивать и масштабировать умных AI-агентов.
-                От идеи до продакшена за минуты, а не месяцы.
+                Широкий выбор электрического транспорта: трициклы, мопеды, велосипеды и самокаты.
+                Быстрая доставка, гарантия, сервисное обслуживание.
               </p>
               <div className="flex gap-4 mb-12 flex-col sm:flex-row">
                 <button className="group px-8 py-4 bg-gradient-to-r from-accent to-accent/90 text-black rounded-full hover:shadow-2xl hover:shadow-accent/50 transition-all font-semibold text-lg flex items-center gap-3 justify-center">
-                  Запустить сейчас
+                  Смотреть каталог
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
                 </button>
                 <button className="px-8 py-4 border border-accent/40 rounded-full hover:border-accent/70 hover:bg-accent/10 transition-all font-medium text-lg text-white">
-                  Смотреть демо
+                  Тест-драйв
                 </button>
               </div>
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
                 <div>
-                  <div className="text-2xl font-bold text-accent mb-2">10 000+</div>
-                  <p className="text-sm text-white/60">Активных агентов</p>
+                  <div className="text-2xl font-bold text-accent mb-2">500+</div>
+                  <p className="text-sm text-white/60">Моделей в наличии</p>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white mb-2">500 000+</div>
-                  <p className="text-sm text-white/60">Выполненных задач</p>
+                  <div className="text-2xl font-bold text-white mb-2">2 000+</div>
+                  <p className="text-sm text-white/60">Довольных клиентов</p>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-accent mb-2">99.99%</div>
-                  <p className="text-sm text-white/60">Аптайм</p>
+                  <div className="text-2xl font-bold text-accent mb-2">3 года</div>
+                  <p className="text-sm text-white/60">Гарантия на технику</p>
                 </div>
               </div>
             </div>
@@ -120,77 +130,101 @@ const Index = () => {
             <div
               className={`relative h-96 lg:h-[550px] transition-all duration-1000 flex items-center justify-center ${visibleSections["hero"] ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-transparent rounded-3xl blur-3xl animate-pulse" />
-              <img
-                src="/omnius-logo.png"
-                alt="Omnius Agent"
-                className="w-full max-w-sm lg:max-w-md drop-shadow-2xl animate-float relative z-10"
-              />
+              {/* Карточки категорий транспорта */}
+              <div className="grid grid-cols-2 gap-4 w-full max-w-md">
+                {[
+                  { icon: "Bike", label: "Электровелосипеды", count: "120+ моделей", color: "from-accent/20 to-accent/5" },
+                  { icon: "Zap", label: "Электромопеды", count: "80+ моделей", color: "from-blue-500/20 to-blue-500/5" },
+                  { icon: "Navigation", label: "Электросамокаты", count: "200+ моделей", color: "from-accent/20 to-accent/5" },
+                  { icon: "Car", label: "Электротрициклы", count: "60+ моделей", color: "from-blue-500/20 to-blue-500/5" },
+                ].map((cat, i) => (
+                  <div
+                    key={i}
+                    className={`bg-gradient-to-br ${cat.color} border border-accent/20 rounded-2xl p-6 backdrop-blur-sm hover:border-accent/50 transition-all cursor-pointer hover:scale-105`}
+                    style={{ animationDelay: `${i * 200}ms` }}
+                  >
+                    <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center mb-3">
+                      <Icon name={cat.icon} size={20} className="text-accent" />
+                    </div>
+                    <p className="font-bold text-white text-sm mb-1">{cat.label}</p>
+                    <p className="text-xs text-white/50">{cat.count}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-blue-500/20 rounded-3xl blur-3xl -z-10 animate-pulse" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section — Категории */}
       <section id="features" className="py-32 px-6 bg-accent/5">
         <div className="max-w-7xl mx-auto">
           <div
             className={`text-center mb-20 transition-all duration-1000 ${visibleSections["features"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Возможности</span>
+            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Наш каталог</span>
             <h2 className="text-5xl lg:text-6xl font-display font-black tracking-tighter mt-4 mb-6">
               <span className="bg-gradient-to-r from-white via-white to-accent/40 bg-clip-text text-transparent">
-                Суперсилы встроены
+                Для каждого — свой транспорт
               </span>
             </h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+              От компактных самокатов до мощных трициклов — найдите идеальный электротранспорт под ваши задачи
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: Zap,
-                title: "Молниеносный деплой",
-                desc: "Развертывание в продакшен одним кликом без настройки",
+                icon: "Bike",
+                title: "Электровелосипеды",
+                desc: "Дальность до 120 км на одном заряде. Идеально для городских поездок и загородных прогулок.",
               },
               {
-                icon: Cpu,
-                title: "Умный AI-движок",
-                desc: "Продвинутые возможности рассуждения, которые учатся и адаптируются",
+                icon: "Zap",
+                title: "Электромопеды",
+                desc: "Скорость до 60 км/ч, мощный мотор. Замена автомобилю в городском трафике.",
               },
               {
-                icon: TrendingUp,
-                title: "Автомасштабирование",
-                desc: "Автоматическое масштабирование ресурсов на основе нагрузки",
+                icon: "Navigation",
+                title: "Электросамокаты",
+                desc: "Лёгкие и складные модели для последней мили. От 15 до 50 км/ч на любой вкус.",
               },
               {
-                icon: Lock,
-                title: "Корпоративная безопасность",
-                desc: "Банковское шифрование и соответствие SOC2, GDPR, HIPAA",
+                icon: "Car",
+                title: "Электротрициклы",
+                desc: "Устойчивая платформа для груза и комфорта. Грузоподъёмность до 300 кг.",
               },
               {
-                icon: Settings,
-                title: "Гибкие сценарии",
-                desc: "Создавайте сложные цепочки автоматизации в визуальном редакторе",
+                icon: "Battery",
+                title: "Мощные аккумуляторы",
+                desc: "Литий-ионные батареи с гарантией 2 года. Зарядка от обычной розетки.",
               },
               {
-                icon: Cloud,
-                title: "Мультиоблачность",
-                desc: "Разворачивайте где угодно - AWS, Azure, GCP или своя инфраструктура",
+                icon: "Shield",
+                title: "Официальная гарантия",
+                desc: "До 3 лет гарантии на всю технику. Собственный сервисный центр.",
               },
             ].map((item, i) => {
-              const Icon = item.icon;
               const isVisible = visibleSections["features"];
               return (
                 <div
                   key={i}
-                  className={`group p-8 border border-accent/10 hover:border-accent/40 rounded-2xl bg-card/50 hover:bg-card/80 transition-all duration-500 cursor-pointer backdrop-blur-sm ${
+                  className={`group p-8 border border-accent/10 hover:border-accent/40 rounded-2xl bg-card/50 hover:bg-card/80 transition-all duration-700 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <Icon className="w-10 h-10 mb-6 text-accent group-hover:scale-110 transition-transform" />
-                  <h3 className="font-display font-bold text-xl mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mb-5 transition-all">
+                    <Icon name={item.icon} size={22} className="text-accent" />
+                  </div>
+                  <h3 className="font-display font-bold text-lg mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">{item.desc}</p>
+                  <div className="mt-5 flex items-center gap-2 text-accent text-sm font-medium opacity-0 group-hover:opacity-100 transition-all">
+                    <span>Смотреть модели</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
               );
             })}
@@ -204,20 +238,20 @@ const Index = () => {
           <div
             className={`text-center mb-20 transition-all duration-1000 ${visibleSections["how"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Процесс</span>
+            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Процесс покупки</span>
             <h2 className="text-5xl lg:text-6xl font-display font-black tracking-tighter mt-4">
               <span className="bg-gradient-to-r from-white via-white to-accent/40 bg-clip-text text-transparent">
-                От нуля до героя
+                Просто и быстро
               </span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { num: "01", title: "Проектируй", desc: "Определите возможности агента в интуитивном конструкторе" },
-              { num: "02", title: "Обучай", desc: "Загрузите данные и примеры для настройки поведения" },
-              { num: "03", title: "Запускай", desc: "Запуск в продакшен одним кликом" },
-              { num: "04", title: "Масштабируй", desc: "Автомасштабирование обрабатывает миллионы запросов" },
+              { num: "01", title: "Выбираете", desc: "Подбираете модель из каталога или консультируетесь с нашим специалистом" },
+              { num: "02", title: "Тест-драйв", desc: "Приезжаете к нам или вызываете тест-драйв на дом — убеждаетесь лично" },
+              { num: "03", title: "Оформляете", desc: "Оплата картой, наличными или в рассрочку без переплат" },
+              { num: "04", title: "Получаете", desc: "Доставка до двери за 1–3 дня или самовывоз со склада" },
             ].map((step, i) => {
               const isVisible = visibleSections["how"];
               return (
@@ -253,10 +287,10 @@ const Index = () => {
           <div
             className={`text-center mb-20 transition-all duration-1000 ${visibleSections["pricing"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Тарифы</span>
+            <span className="text-xs font-medium tracking-widest text-accent/60 uppercase">Ценовые категории</span>
             <h2 className="text-5xl lg:text-6xl font-display font-black tracking-tighter mt-4">
               <span className="bg-gradient-to-r from-white via-white to-accent/40 bg-clip-text text-transparent">
-                Простые цены
+                На любой бюджет
               </span>
             </h2>
           </div>
@@ -264,16 +298,30 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                name: "Стартовый",
-                price: "4 900 \u20bd/\u043c\u0435\u0441",
-                features: ["До 10 агентов", "100 000 запросов/месяц", "Поддержка сообщества", "Базовая аналитика"],
+                name: "Начальный уровень",
+                price: "от 25 000 ₽",
+                features: [
+                  "Электросамокаты до 35 км/ч",
+                  "Электровелосипеды с мотором 250W",
+                  "Дальность 40–70 км",
+                  "Гарантия 1 год",
+                  "Базовый сервис",
+                ],
                 highlight: false,
+                cta: "Смотреть модели",
               },
               {
-                name: "Корпоративный",
-                price: "По запросу",
-                features: ["Безлимитные агенты", "Безлимитные запросы", "Поддержка 24/7", "Индивидуальные интеграции"],
+                name: "Премиум уровень",
+                price: "от 85 000 ₽",
+                features: [
+                  "Электромопеды и трициклы",
+                  "Мощность мотора от 1000W",
+                  "Дальность 100–150 км",
+                  "Гарантия 3 года",
+                  "Сервис + выезд мастера",
+                ],
                 highlight: true,
+                cta: "Получить консультацию",
               },
             ].map((plan, i) => {
               const isVisible = visibleSections["pricing"];
@@ -294,6 +342,11 @@ const Index = () => {
                     }`}
                   >
                     <div>
+                      {plan.highlight && (
+                        <div className="inline-block text-xs font-bold text-black bg-accent rounded-full px-3 py-1 mb-4 uppercase tracking-wider">
+                          Популярный выбор
+                        </div>
+                      )}
                       <h3 className="font-display font-bold text-2xl mb-2">{plan.name}</h3>
                       <p className="text-4xl font-black text-accent mb-8">{plan.price}</p>
                       <ul className="space-y-4 mb-10">
@@ -312,7 +365,7 @@ const Index = () => {
                           : "border border-accent/20 hover:border-accent/40 hover:bg-accent/5"
                       }`}
                     >
-                      {plan.highlight ? "Связаться с нами" : "Попробовать бесплатно"}
+                      {plan.cta}
                     </button>
                   </div>
                 </div>
@@ -327,34 +380,67 @@ const Index = () => {
         <div
           className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${visibleSections["cta"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
+          <div className="mb-6 inline-block">
+            <span className="text-xs font-medium tracking-widest text-accent/80 uppercase border border-accent/30 rounded-full px-4 py-1.5">
+              ⚡ Бесплатная консультация
+            </span>
+          </div>
           <h2 className="text-5xl lg:text-6xl font-display font-black tracking-tighter mb-6">
             <span className="bg-gradient-to-r from-white via-white to-accent/40 bg-clip-text text-transparent">
-              Готовы создавать?
+              Готовы пересесть
             </span>
+            <br />
+            <span className="text-accent">на электро?</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-12 font-light max-w-2xl mx-auto">
-            Присоединяйтесь к тысячам разработчиков, которые строят будущее с AgentForge.
+            Оставьте заявку — наш специалист перезвонит, поможет с выбором и ответит на все вопросы.
           </p>
-          <button className="group px-10 py-5 bg-gradient-to-r from-accent to-accent/90 text-black rounded-full hover:shadow-2xl hover:shadow-accent/40 transition-all font-bold text-lg flex items-center gap-3 mx-auto">
-            Начать бесплатно
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
-          </button>
+          <div className="flex gap-4 justify-center flex-col sm:flex-row">
+            <button className="group px-10 py-5 bg-gradient-to-r from-accent to-accent/90 text-black rounded-full hover:shadow-2xl hover:shadow-accent/40 transition-all font-bold text-lg flex items-center gap-3 mx-auto sm:mx-0">
+              Оставить заявку
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
+            </button>
+            <button className="px-10 py-5 border border-accent/40 rounded-full hover:border-accent/70 hover:bg-accent/10 transition-all font-medium text-lg text-white mx-auto sm:mx-0">
+              Позвонить нам
+            </button>
+          </div>
+
+          {/* Преимущества под CTA */}
+          <div className="mt-16 grid grid-cols-3 gap-8 pt-8 border-t border-white/10 max-w-2xl mx-auto">
+            <div className="flex flex-col items-center gap-2">
+              <Truck className="w-6 h-6 text-accent" />
+              <p className="text-sm text-white/60 text-center">Доставка по всей России</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Shield className="w-6 h-6 text-accent" />
+              <p className="text-sm text-white/60 text-center">Гарантия до 3 лет</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Headphones className="w-6 h-6 text-accent" />
+              <p className="text-sm text-white/60 text-center">Поддержка 7 дней в неделю</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-accent/10 py-12 px-6 bg-background/50">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
-          <p>© 2025 AgentForge — Создавайте умных агентов</p>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 bg-gradient-to-br from-accent to-accent/60 rounded-md flex items-center justify-center">
+              <Zap className="w-3 h-3 text-black" />
+            </div>
+            <p>© 2025 ElectroRide — Магазин электротранспорта</p>
+          </div>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">
-              Конфиденциальность
+              Каталог
             </a>
             <a href="#" className="hover:text-white transition-colors">
-              Условия
+              Доставка
             </a>
             <a href="#" className="hover:text-white transition-colors">
-              Документация
+              Гарантия
             </a>
             <a href="#" className="hover:text-white transition-colors">
               Контакты
